@@ -16,6 +16,16 @@ app.get("/api/student" , (req ,  res) => {
     res.json(data);
 });
 
+app.get("/api/student/:id", (req , res) => {
+    let stud = data.find(std => std.id === parseInt(req.params.id));
+
+    if(!stud){
+        res.status(404).send("Student not found...");
+    }
+
+    res.json(stud);
+});
+
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
 
