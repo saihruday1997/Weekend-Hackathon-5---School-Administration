@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-let data = require("./InitialData");
+const data = require("./InitialData");
 // your code goes here
 
 app.get("/api/student" , (req ,  res) => {
@@ -24,6 +24,22 @@ app.get("/api/student/:id", (req , res) => {
     }
 
     res.json(stud);
+});
+
+app.post("/api/student" , (req , res) => {
+    let newStd = {
+        id: data[data.length - 1].id +1,
+        ...req.body
+    }
+
+    if(!newStd.name || !newStd.currentClass || !newStd.division){
+        res.status(400).send();
+        return;
+    }
+
+    data.push(newStd);
+
+    res.json({"id" : newStd.id});
 });
 
 
