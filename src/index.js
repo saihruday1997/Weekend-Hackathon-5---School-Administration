@@ -8,7 +8,13 @@ app.use(express.urlencoded());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+let data = require("./InitialData");
 // your code goes here
+
+app.get("/api/student" , (req ,  res) => {
+    res.json(data);
+});
 
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
