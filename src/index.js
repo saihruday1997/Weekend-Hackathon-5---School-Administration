@@ -93,13 +93,13 @@ app.put("/api/student/:id" , (req , res) => {
 app.delete("/api/student/:id", (req , res) => {
     let id = req.params.id;
 
-    let stud = data.find(std => std.id === id);
+    let stud = data.find(std => std.id === parseInt(id));
 
     if(!stud){
         res.status(404).send();
     }
 
-    let index = data.findIndexstd => std.id === id);
+    let index = data.findIndex(std => std.id === parseInt(id));
 
     data.splice(index, 1);
 });
