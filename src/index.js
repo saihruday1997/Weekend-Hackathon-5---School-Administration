@@ -83,7 +83,7 @@ app.put("/api/student/:id" , (req , res) => {
         stud.division = input.division;
     }
 
-    data[index] = stud;
+    data.splice(index, 1, stud);
 
     res.send(stud.name);
 });
