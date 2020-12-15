@@ -47,12 +47,27 @@ app.post("/api/student" , (req , res) => {
 app.put("/api/student/:id" , (req , res) => {
     let stud = data.find(std => std.id === parseInt(req.params.id));
 
+    let index = data.findIndex(std => std.id === parseInt(req.params.id));
+
     if(!stud){
         res.status(400).send();
-        return;
     }
 
+    let input = req.body;
 
+    if(input.name){
+        stud.name = input.name;
+    }
+
+    if(input.currentClass){
+        stud.currentClass = input.currentClass;
+    }
+
+    if(input.division){
+        stud.division = input.division;
+    }
+
+    data[i] = stud;
 });
 
 
