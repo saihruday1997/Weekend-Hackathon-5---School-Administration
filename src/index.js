@@ -42,6 +42,17 @@ app.post("/api/student" , (req , res) => {
     res.json({"id" : newStd.id});
 });
 
+app.put("/api/student/:id" , (req , res) => {
+    let stud = data.find(std => std.id === parseInt(req.params.id));
+
+    if(!stud){
+        res.status(400).send();
+        return;
+    }
+
+
+});
+
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
 
