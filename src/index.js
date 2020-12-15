@@ -47,12 +47,12 @@ app.post("/api/student" , (req , res) => {
 app.put("/api/student/:id" , (req , res) => {
     let studId = req.params.id;
 
-    let stud = {...data.find(std => std.id === parseInt(studId))};
+    let stud = data.find(std => std.id === parseInt(studId));
 
     let index = data.findIndex(std => std.id === parseInt(studId));
 
     if(!stud){
-        res.status(400).send("Invalid id...");
+        res.status(400).send();
     }
 
     let input = req.body;
@@ -65,16 +65,24 @@ app.put("/api/student/:id" , (req , res) => {
         if(input.name === ""){
             res.status(400).send();
         }
+
+        stud.name = input.name;
     }
-    else if(input.currentClass){
+
+    if(input.currentClass){
         if(!Number.isInteger(input.currentClass)){
             res.status(400).send();
         }
+
+        stud.currentClass = input.currentClass;
     }
-    else if(input.division){
+
+    if(input.division){
         if(input.division.length !== 1 || !/^[A-Z]+$/.test(input.division)){
             res.status(400).send();
         }
+
+        stud.division = input.division;
     }
 
     data.splice(index, 1, stud);
