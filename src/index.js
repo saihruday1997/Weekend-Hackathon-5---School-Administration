@@ -55,6 +55,10 @@ app.put("/api/student/:id" , (req , res) => {
 
     let input = req.body;
 
+    if(!input.name && !input.currentClass && !input.division){
+        res.status(400).send();
+    }
+
     if(input.name){
         stud.name = input.name;
     }
@@ -67,7 +71,7 @@ app.put("/api/student/:id" , (req , res) => {
         stud.division = input.division;
     }
 
-    data[i] = stud;
+    res.send(stud.name);
 });
 
 
