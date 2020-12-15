@@ -28,18 +28,17 @@ app.get("/api/student/:id", (req , res) => {
 
 app.post("/api/student" , (req , res) => {
     let newStd = {
-        id: data[data.length - 1].id +1,
+        id: data[data.length - 1].id + 1,
         ...req.body
     }
 
     if(!newStd.name || !newStd.currentClass || !newStd.division){
         res.status(400).send();
-        return;
     }
 
     data.push(newStd);
 
-    let id = parseInt(newStd.id);
+    let id = newStd.id;
 
     res.json({"id" : id});
 });
