@@ -102,6 +102,8 @@ app.delete("/api/student/:id", (req , res) => {
     let index = data.findIndex(std => std.id === parseInt(id));
 
     data.splice(index, 1);
+
+    res.status(200).send();
 });
 
 
