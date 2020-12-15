@@ -90,6 +90,20 @@ app.put("/api/student/:id" , (req , res) => {
     res.send(stud.name);
 });
 
+app.delete("/api/student/:id", (req , res) => {
+    let id = req.params.id;
+
+    let stud = data.find(std => std.id === id);
+
+    if(!stud){
+        res.status(404).send();
+    }
+
+    let index = data.findIndexstd => std.id === id);
+
+    data.splice(index, 1);
+});
+
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
 
