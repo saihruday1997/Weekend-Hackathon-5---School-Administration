@@ -47,7 +47,7 @@ app.post("/api/student" , (req , res) => {
 app.put("/api/student/:id" , (req , res) => {
     let stud = data.find(std => std.id === parseInt(req.params.id));
 
-    //let index = data.findIndex(std => std.id === parseInt(req.params.id));
+    let index = data.findIndex(std => std.id === parseInt(req.params.id));
 
     if(!stud){
         res.status(400).send();
@@ -82,6 +82,8 @@ app.put("/api/student/:id" , (req , res) => {
 
         stud.division = input.division;
     }
+
+    data[index] = stud;
 
     res.send(stud.name);
 });
