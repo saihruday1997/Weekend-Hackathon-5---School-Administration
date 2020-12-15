@@ -40,7 +40,7 @@ app.post("/api/student" , (req , res) => {
 
     let id = newStd.id;
 
-    res.json({"id" : id});
+    res.send({"id" : id});
 });
 
 app.put("/api/student/:id" , (req , res) => {
