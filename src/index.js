@@ -39,7 +39,7 @@ app.post("/api/student" , (req , res) => {
 
     data.push(newStd);
 
-    res.json({"id" : newStd.id});
+    res.json({"id" : parseInt(newStd.id)});
 });
 
 app.put("/api/student/:id" , (req , res) => {
