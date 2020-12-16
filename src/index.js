@@ -59,21 +59,25 @@ app.put("/api/student/:id" , (req , res) => {
 
     if(!stud){
         res.status(400).send();
+        return;
     }else if(input.name){
         if(input.name === ""){
             res.status(400).send();
+            return;
         } else {
             stud.name = input.name;
         }
     }else if(input.currentClass){
         if(!Number.isInteger(input.currentClass)){
             res.status(400).send();
+            return;
         }else {
             stud.currentClass = input.currentClass;
         }
     }else if(input.division){
         if(input.division.length !== 1 || !Number.isInteger(input.division)) {
             res.status(400).send();
+            return;
         }else {
             stud.division = input.division;
         }
