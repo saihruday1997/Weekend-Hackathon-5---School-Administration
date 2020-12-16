@@ -29,7 +29,8 @@ app.get("/api/student/:id", (req , res) => {
 app.post("/api/student" , (req , res) => {
     let newStd = {
         id: data[data.length - 1].id + 1,
-        ...req.body
+        ...req.body,
+        currentClass: parseInt(req.body.currentClass)
     }
 
     if(!newStd.name || !newStd.currentClass || !newStd.division){
@@ -84,7 +85,13 @@ app.put("/api/student/:id" , (req , res) => {
         }
     }
 
-    data.splice(index, 1, stud);
+    let newStd = {
+        id: studId,
+        ...stud,
+        ...req.body
+    }
+
+    data.splice(index, 1, newStd);
 
     res.send(stud.name);
 });
