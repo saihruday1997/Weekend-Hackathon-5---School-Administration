@@ -85,10 +85,16 @@ app.put("/api/student/:id" , (req , res) => {
         }
     }
 
-    let currClass = Number(stud.currentClass);
-    stud.currentClass = currClass;
+    let newStd = {
+        id: studId,
+        ...stud,
+        ...req.body
+    }
 
-    data.splice(index, 1, stud);
+    let currClass = Number(newStd.currentClass);
+    newStd.currentClass = currClass;
+
+    data.splice(index, 1, newStd);
 
     res.send(stud.name);
 });
