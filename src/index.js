@@ -63,25 +63,25 @@ app.put("/api/student/:id" , (req , res) => {
     if(input.name){
         if(input.name === ""){
             res.status(400).send();
+        } else {
+            stud.name = input.name;
         }
-
-        stud.name = input.name;
     }
 
     if(input.currentClass){
         if(!Number.isInteger(input.currentClass)){
             res.status(400).send();
+        }else {
+            stud.currentClass = input.currentClass;
         }
-
-        stud.currentClass = input.currentClass;
     }
 
     if(input.division){
-        if(input.division.length !== 1 || !/^[A-Z]+$/.test(input.division)){
+        if(input.division.length !== 1 || !/^[A-Z]+$/.test(input.division)) {
             res.status(400).send();
+        }else {
+            stud.division = input.division;
         }
-
-        stud.division = input.division;
     }
 
     data.splice(index, 1, stud);
