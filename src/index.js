@@ -64,24 +64,31 @@ app.put("/api/student/:id" , (req , res) => {
         if(input.name === ""){
             res.status(400).send();
             return;
-        } else {
-            stud.name = input.name;
         }
+
+        stud.name = input.name;
+
     }else if(input.currentClass){
         if(!Number.isInteger(input.currentClass)){
             res.status(400).send();
             return;
-        }else {
-            stud.currentClass = input.currentClass;
         }
+
+        stud.currentClass = input.currentClass;
+
     }else if(input.division){
         if(input.division.length !== 1 || !Number.isInteger(input.division)) {
             res.status(400).send();
             return;
-        }else {
-            stud.division = input.division;
         }
+
+        stud.division = input.division;
+
     }
+
+    let currClass = Number(stud.currentClass);
+
+    stud.currentClass = currClass;
 
     data.splice(index, 1, stud);
 
