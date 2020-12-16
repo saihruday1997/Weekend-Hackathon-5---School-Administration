@@ -77,7 +77,7 @@ app.put("/api/student/:id" , (req , res) => {
     }
 
     if(input.division){
-        if(input.division.length !== 1 || !/^[A-Z]+$/.test(input.division)) {
+        if(input.division.length !== 1 || !Number.isInteger(input.division)) {
             res.status(400).send();
         }else {
             stud.division = input.division;
