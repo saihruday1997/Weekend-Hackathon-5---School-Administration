@@ -65,31 +65,22 @@ app.put("/api/student/:id" , (req , res) => {
             res.status(400).send();
             return;
         }
-
-        stud.name = input.name;
-
     }else if(input.currentClass){
         if(!Number.isInteger(input.currentClass)){
             res.status(400).send();
             return;
         }
-
-        stud.currentClass = input.currentClass;
-
     }else if(input.division){
         if(input.division.length !== 1 || !Number.isInteger(input.division)) {
             res.status(400).send();
             return;
         }
-
-        stud.division = input.division;
-
     }
 
     let newStd = {
         id: studId,
         ...stud,
-        ...req.body
+        ...input
     }
 
     let currClass = Number(newStd.currentClass);
